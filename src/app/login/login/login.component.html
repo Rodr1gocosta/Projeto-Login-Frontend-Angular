@@ -1,0 +1,25 @@
+<div class="container" id="login">
+    <form [formGroup]="form" class="login">
+        <h2 class="pt-3">Login</h2>
+        <div class="mb-2 row">
+            <label for="usuario" class="col-sm-2 col-form-label">Usuário:</label>
+            <div class="col-sm-12">
+                <input type="email" class="form-control" id="usuario" placeholder="email@example.com" formControlName="email" [ngClass]="(form.get('email')?.touched || form.get('email')?.dirty) && form.get('email')?.errors ? 'is-invalid' : '!is-invalid'">
+                <div class="invalid-feedback">Campo Obrigatório!</div>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="senha" class="col-sm-2 col-form-label">Senha:</label>
+            <div class="col-sm-12">
+                <input type="password" class="form-control" id="senha" formControlName="senha" [ngClass]="(form.get('senha')?.touched || form.get('senha')?.dirty) && form.get('senha')?.errors ? 'is-invalid' : '!is-invalid'">
+                <div class="invalid-feedback">Campo Obrigatório!</div>
+            </div>
+        </div>
+    
+        <div class="d-grid gap-2">
+            <button class="btn btn-primary" type="button" [disabled]="form.invalid" (click)="fazerLogin()">Logar</button>
+            <button class="btn btn-outline-secondary" type="button" (click)="esquiciSenha()">Esqueci minha senha</button>
+            <button class="mb-3 btn btn-outline-dark" type="button" (click)="cadastrar()">Cadastra-se</button>
+        </div>
+    </form>  
+</div>
