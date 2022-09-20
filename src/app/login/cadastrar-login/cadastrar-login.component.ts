@@ -13,9 +13,10 @@ export class CadastrarLoginComponent implements OnInit {
 
 
   cadastroLogin = this.formBuilder.group({
-    email: [null, Validators.email],
-    senha: [null, Validators.required],
-    senhaNovamente: [null, Validators.required],
+    username: [null, [Validators.required]],
+    email: [null, [Validators.required, Validators.email]],
+    password: [null, [Validators.required]],
+    rePassword: [null, [Validators.required]],
     status: [null, Validators.required],
     ativo: [null, Validators.required]
   })
@@ -31,12 +32,24 @@ export class CadastrarLoginComponent implements OnInit {
   cadastrar(){
     this.loginService.cadastrarLogin(this.cadastroLogin.value).subscribe(response => {
       this.router.navigate(['/login'])
-      this.alertaModalService.AlertaSucess("Cadastro realizado com sucesso!");
-    });
+      this.alertaModalService.AlertaSucess("Cadastro realizado com sucesso! Confirme seu cadastro por email para poder acessar.");
+    },
+    erro => {
+      this.alertaModalService.AlertaDanger("Não foi possivel cadastrar!");
+    }
+    );
   }
 
   cancelar(){
     this.router.navigate(['/login']);
+  }
+
+  errorValidUserName() {
+    if(this.cadastroLogin.get(['userName'])?.invalid){
+      return 'O campo tem que ser preechido!';
+    }else{
+      return false;
+    }
   }
 
 }

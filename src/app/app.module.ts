@@ -14,6 +14,7 @@ import { SistemaComponent } from './sistema/sistema/sistema.component';
 import { CadastrarLoginComponent } from './login/cadastrar-login/cadastrar-login.component';
 
 import { LoginService } from './service/login-service.service';
+import { ResetLoginComponent } from './login/reset-login/reset-login.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { LoginService } from './service/login-service.service';
     AppComponent,
     LoginComponent,
     SistemaComponent,
-    CadastrarLoginComponent
+    CadastrarLoginComponent,
+    ResetLoginComponent
   ],
   imports: [
     BrowserModule,

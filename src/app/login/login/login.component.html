@@ -4,14 +4,14 @@
         <div class="mb-2 row">
             <label for="usuario" class="col-sm-2 col-form-label">Usuário:</label>
             <div class="col-sm-12">
-                <input type="email" class="form-control" id="usuario" placeholder="email@example.com" formControlName="email" [ngClass]="(form.get('email')?.touched || form.get('email')?.dirty) && form.get('email')?.errors ? 'is-invalid' : '!is-invalid'">
+                <input type="text" class="form-control" id="usuario" formControlName="userName" [ngClass]="(form.get('userName')?.touched || form.get('userName')?.dirty) && form.get('userName')?.errors ? 'is-invalid' : '!is-invalid'">
                 <div class="invalid-feedback">Campo Obrigatório!</div>
             </div>
         </div>
         <div class="mb-3 row">
-            <label for="senha" class="col-sm-2 col-form-label">Senha:</label>
+            <label for="password" class="col-sm-2 col-form-label">Senha:</label>
             <div class="col-sm-12">
-                <input type="password" class="form-control" id="senha" formControlName="senha" [ngClass]="(form.get('senha')?.touched || form.get('senha')?.dirty) && form.get('senha')?.errors ? 'is-invalid' : '!is-invalid'">
+                <input type="password" class="form-control" id="senha" formControlName="password" [ngClass]="(form.get('password')?.touched || form.get('password')?.dirty) && form.get('password')?.errors ? 'is-invalid' : '!is-invalid'">
                 <div class="invalid-feedback">Campo Obrigatório!</div>
             </div>
         </div>

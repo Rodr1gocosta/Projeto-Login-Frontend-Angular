@@ -1,0 +1,42 @@
+<div [formGroup]="formEnviarEmail" class="container">
+    <h2>Redefinir Senha</h2>
+    <br><br>
+    <div class="mb-3 row">
+        <label for="email" class="col-sm-2 col-form-label">E-mail:</label>
+        <div class="col-sm-10">
+            <input type="email" class="form-control" id="email" placeholder="email@example.com" formControlName="email">
+        </div>
+    </div>
+</div>
+<div [formGroup]="formRedefinirSenha" class="container">
+    <div *ngIf="redefinirSenha">
+        <div class="mb-3 row">
+            <label for="email" class="col-sm-2 col-form-label">Confirme seu E-mail:</label>
+            <div class="col-sm-10">
+                <input type="email" class="form-control" id="email" placeholder="email@example.com" formControlName="email">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="password" class="col-sm-2 col-form-label">Senha:</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" id="password" formControlName="password">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="rePassword" class="col-sm-2 col-form-label">Digite novamente:</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" id="rePassword" formControlName="rePassword">
+            </div>
+        </div>
+        <br>
+        <div class="mb-3 row" style="color: rgb(245, 147, 10);">
+            <p><Strong>Obs: </Strong>Senha deve ter letras, números e caracteres especiais</p>
+        </div>
+    </div>
+    
+    <div class="d-grid gap-2">
+        <button *ngIf="enviarEmailBotao" class="btn btn-success" type="button" [disabled]="formEnviarEmail.invalid" (click)="enviarEmail()">Enviar</button>
+        <button *ngIf="salvarEmailBotao" class="btn btn-success" type="button" (click)="redefinirSenhaSalvar()">Salvar</button>
+        <button class="btn btn-danger" type="button" (click)="cancelar()">Cancelar</button>
+    </div>
+</div>

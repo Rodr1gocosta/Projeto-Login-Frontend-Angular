@@ -1,3 +1,4 @@
+import { AlertaModalService } from './../../service/alerta-modal.service';
 import { Usuario } from './usuario';
 import { LoginService } from '../../service/login-service.service';
 import { Component, OnInit } from '@angular/core';
@@ -15,29 +16,38 @@ export class LoginComponent implements OnInit {
 
   constructor(private formGroup: FormBuilder,
               private loginService: LoginService,
-              private router: Router) { }
+              private router: Router,
+              private alertaModalService: AlertaModalService) { }
 
   ngOnInit(): void {
     this.form = this.formGroup.group({
-      email: ['', [Validators.required, Validators.email]],
-      senha: ['', [Validators.required]]
+      userName: ['', [Validators.required]],
+      password: ['', [Validators.required]]
    })
   }
 
   fazerLogin() {
-    this.loginService.validarteste(this.form.value);
+    this.loginService.validar(this.form.value).subscribe(resposta => {
+        this.loginService.usuarioAutenticacao = true;
+        this.router.navigate(['/']);
+    },
+    erro => {
+        this.loginService.usuarioAutenticacao = false;
+        this.alertaModalService.AlertaDanger("Usuário ou senha invalida!");
+    }
+    );
   }
 
-  esquiciSenha() {
-    
+  esquiciSenha() {  
+    this.router.navigate(['/login/reset-senha']);
   }
 
   cadastrar(){
     this.router.navigate(['/login/cadastrar']);
   }
 
-  errorValidEmail() {
-    if(this.form.get(['email'])?.invalid){
+  errorValidUserName() {
+    if(this.form.get(['userName'])?.invalid){
       return 'O campo tem que ser preechido!';
     }else{
       return false;

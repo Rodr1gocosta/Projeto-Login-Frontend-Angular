@@ -1,22 +1,31 @@
 <div [formGroup]="cadastroLogin" class="container" id="login">
     <div class="login">
         <h2>Cadastro</h2>
+        <br><br>
         <div class="mb-3 row">
-            <label for="usuario" class="col-sm-2 col-form-label">Usuário</label>
+            <label for="username" class="col-sm-2 col-form-label">Usuário:</label>
             <div class="col-sm-10">
-                <input type="email" class="form-control" id="usuario" placeholder="email@example.com" formControlName="email">
+                <input type="text" class="form-control" id="username" formControlName="username" [ngClass]="(cadastroLogin.get('username')?.touched || cadastroLogin.get('username')?.dirty) && cadastroLogin.get('username')?.errors ? 'is-invalid' : '!is-invalid'">
+                <div class="invalid-feedback">Campo Obrigatório!</div>
             </div>
         </div>
         <div class="mb-3 row">
-            <label for="senha" class="col-sm-2 col-form-label">Senha</label>
+            <label for="email" class="col-sm-2 col-form-label">E-mail:</label>
             <div class="col-sm-10">
-                <input type="password" class="form-control" id="senha" formControlName="senha">
+                <input type="email" class="form-control" id="email" placeholder="email@example.com" formControlName="email" [ngClass]="(cadastroLogin.get('email')?.touched || cadastroLogin.get('email')?.dirty) && cadastroLogin.get('email')?.errors ? 'is-invalid' : '!is-invalid'">
+                <div class="invalid-feedback">Campo Obrigatório!</div>
             </div>
         </div>
         <div class="mb-3 row">
-            <label for="senha" class="col-sm-2 col-form-label">Digite novamente</label>
+            <label for="password" class="col-sm-2 col-form-label">Senha:</label>
             <div class="col-sm-10">
-                <input type="password" class="form-control" id="senha" formControlName="senhaNovamente">
+                <input type="password" class="form-control" id="password" formControlName="password">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="rePassword" class="col-sm-2 col-form-label">Digite novamente:</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" id="rePassword" formControlName="rePassword">
             </div>
         </div>
         <div class="col-12 mb-3 row justify-content-end">
@@ -29,14 +38,18 @@
             </div>
             <div class="col-5">
                 <select class="form-select" aria-label="Default select example" formControlName="ativo">
-                    <option value="sim">Sim</option>
-                    <option value="nao">Não</option>
+                    <option value="1">Sim</option>
+                    <option value="0">Não</option>
                 </select>
             </div>
         </div>
+        <br>
+        <div class="mb-3 row" style="color: rgb(245, 147, 10);">
+            <p><Strong>Obs: </Strong>Senha deve ter letras, números e caracteres especiais</p>
+        </div>
     
         <div class="d-grid gap-2">
-            <button class="btn btn-success" type="button" (click)="cadastrar()">Salvar</button>
+            <button class="btn btn-success" type="button" [disabled]="cadastroLogin.invalid" (click)="cadastrar()">Salvar</button>
             <button class="btn btn-danger" type="button" (click)="cancelar()">Cancelar</button>
         </div>
     </div>  
