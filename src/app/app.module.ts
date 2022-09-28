@@ -6,15 +6,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { RecaptchaModule } from 'ng-recaptcha';
+
 
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login/login.component';
 import { SistemaComponent } from './sistema/sistema/sistema.component';
 import { CadastrarLoginComponent } from './login/cadastrar-login/cadastrar-login.component';
+import { ResetLoginComponent } from './login/reset-login/reset-login.component';
 
 import { LoginService } from './service/login-service.service';
-import { ResetLoginComponent } from './login/reset-login/reset-login.component';
 
 
 @NgModule({
@@ -32,7 +34,8 @@ import { ResetLoginComponent } from './login/reset-login/reset-login.component';
     ReactiveFormsModule,
     HttpClientModule,
     ModalModule.forRoot(),
-    SharedModule
+    SharedModule,
+    RecaptchaModule,
   ],
   providers: [LoginService, AutoGuarda],
   bootstrap: [AppComponent]
