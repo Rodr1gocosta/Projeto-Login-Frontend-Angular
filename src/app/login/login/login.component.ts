@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
       if(this.formulario.valid){
         this.loginService.validar(this.formulario.value).subscribe(resposta => {
           this.loginService.usuarioAutenticacao = true;
-          this.router.navigate(['/']);
+          this.router.navigate(['/home']);
       },
       erro => {
         this.loginService.usuarioAutenticacao = false;

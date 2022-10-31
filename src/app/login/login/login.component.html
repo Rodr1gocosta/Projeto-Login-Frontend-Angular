@@ -1,35 +1,40 @@
 <section class="home">
     <div class="home_content flex">
-
+        <div class="home_content--bg">
+            <h1 class="header_logo"></h1>
+            <div class="home_content--form">
+    
+                <div class="container" id="login">
+                    <form [formGroup]="formulario" class="login">
+                        <h2>Login</h2>
+                        <div class="mb-2 row">
+                            <label for="usuario" class="col-sm-2 col-form-label">Usuário:</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" id="usuario" formControlName="userName" [ngClass]="(formulario.get('userName')?.touched || formulario.get('userName')?.dirty) && formulario.get('userName')?.errors ? 'is-invalid' : '!is-invalid'">
+                                <div class="invalid-feedback">Campo Obrigatório!</div>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="password" class="col-sm-2 col-form-label">Senha:</label>
+                            <div class="col-sm-12">
+                                <input type="password" class="form-control" id="senha" formControlName="password" [ngClass]="(formulario.get('password')?.touched || formulario.get('password')?.dirty) && formulario.get('password')?.errors ? 'is-invalid' : '!is-invalid'">
+                                <div class="invalid-feedback">Campo Obrigatório!</div>
+                            </div>
+                        </div>
+                    </form>
+                
+                    <form *ngIf="formulario.valid" class="mb-3 ms-2 row">
+                        <re-captcha #recaptchaValid class="g-recaptcha" name="recaptcha" (resolved)="recaptch($event)" siteKey="6LfscikiAAAAAPxN1QpBa_bEZvONdnPffsCAWdam" required></re-captcha>
+                        <script src="https://www.google.com/recapcha/api.js" async defer></script>
+                    </form>  
+                    
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-primary" type="button" [disabled]="!disabledBotao" (click)="fazerLogin()">Logar</button>
+                        <button class="btn btn-outline-secondary" type="button" (click)="esquiciSenha()">Esqueci minha senha</button>
+                        <button class="mb-3 btn btn-outline-dark" type="button" (click)="cadastrar()">Cadastra-se</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
-<!-- <div class="container" id="login">
-    <form [formGroup]="formulario" class="login">
-        <h2 class="pt-3">Login</h2>
-        <div class="mb-2 row">
-            <label for="usuario" class="col-sm-2 col-form-label">Usuário:</label>
-            <div class="col-sm-12">
-                <input type="text" class="form-control" id="usuario" formControlName="userName" [ngClass]="(formulario.get('userName')?.touched || formulario.get('userName')?.dirty) && formulario.get('userName')?.errors ? 'is-invalid' : '!is-invalid'">
-                <div class="invalid-feedback">Campo Obrigatório!</div>
-            </div>
-        </div>
-        <div class="mb-3 row">
-            <label for="password" class="col-sm-2 col-form-label">Senha:</label>
-            <div class="col-sm-12">
-                <input type="password" class="form-control" id="senha" formControlName="password" [ngClass]="(formulario.get('password')?.touched || formulario.get('password')?.dirty) && formulario.get('password')?.errors ? 'is-invalid' : '!is-invalid'">
-                <div class="invalid-feedback">Campo Obrigatório!</div>
-            </div>
-        </div>
-    </form>
-
-    <form *ngIf="formulario.valid" class="mb-3 ms-2 row">
-        <re-captcha #recaptchaValid class="g-recaptcha" name="recaptcha" (resolved)="recaptch($event)" siteKey="6LfscikiAAAAAPxN1QpBa_bEZvONdnPffsCAWdam" required></re-captcha>
-        <script src="https://www.google.com/recapcha/api.js" async defer></script>
-    </form>  
-    
-    <div class="d-grid gap-2">
-        <button class="btn btn-primary" type="button" [disabled]="!disabledBotao" (click)="fazerLogin()">Logar</button>
-        <button class="btn btn-outline-secondary" type="button" (click)="esquiciSenha()">Esqueci minha senha</button>
-        <button class="mb-3 btn btn-outline-dark" type="button" (click)="cadastrar()">Cadastra-se</button>
-    </div>
-</div> -->

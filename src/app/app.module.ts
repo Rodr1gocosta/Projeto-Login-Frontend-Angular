@@ -17,6 +17,7 @@ import { CadastrarLoginComponent } from './login/cadastrar-login/cadastrar-login
 import { ResetLoginComponent } from './login/reset-login/reset-login.component';
 
 import { LoginService } from './service/login-service.service';
+import { AtendenteComponent } from './atendente/atendente.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { LoginService } from './service/login-service.service';
     LoginComponent,
     SistemaComponent,
     CadastrarLoginComponent,
-    ResetLoginComponent
+    ResetLoginComponent,
+    AtendenteComponent
   ],
   imports: [
     BrowserModule,
